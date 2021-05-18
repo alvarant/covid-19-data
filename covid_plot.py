@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def read_in_data(filename):
+	covid_df = pd.read_csv('/home/shared_data/covid-19-data/rolling-averages/us-states.csv')
+	covid_df
+
     '''
     INPUT: 
     filename: path to file name: e.g. /home/shared_data/covid-19-data/rolling-averages/us-states.csv
