@@ -11,7 +11,6 @@ def read_in_data(filename):
     ...
 def get_extreme_states(df, num_states):
      '''
-   """will get extreme states"
     INPUT: 
     df: Pandas dataframe with raw state data
     num_states: The number of states to include on either extreme end (e.g. 5 will return 5 states with lowest and overall average covid
