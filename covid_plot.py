@@ -7,10 +7,11 @@ def read_in_data(filename):
     filename: path to file name: e.g. /home/shared_data/covid-19-data/rolling-averages/us-states.csv
     OUTPUT: Pandas dataframe - converted from csv input.
     '''
-    covid_df = pd.read_csv('/home/shared_data/covid-19-data/rolling-averages/us-states.csv')
+    covid_df = pd.read_csv(filename)
     return covid_df
     
 def get_extreme_states(covid_df, num_states):
+
     '''
     INPUT: 
     df: Pandas dataframe with raw state data
@@ -20,14 +21,14 @@ def get_extreme_states(covid_df, num_states):
     low_states: states with lowest covid cases
     high_states: states with highest covid cases
     '''
-    agg_df=covid_df[['cases_avg_per_100k', 'state']].groupby('state').agg('mean')
+    agg_df=covid_df[['state','cases_avg_per_100k']].groupby('state').agg('mean')
     low_states=agg_df.head(3)
     high_states=agg_df.tail(3)
     return low_states,high_states
   
           
 def make_plot(covid_df,states_to_plot):
-     '''
+    '''
     INPUT: 
     df: Pandas dataframe with raw state data
     states_to_plot: list of states to plot (e.g. ['Oregon','Texas','California'])
@@ -35,12 +36,15 @@ def make_plot(covid_df,states_to_plot):
     ax: handle to current plot
     '''
    
-    for state in states_to_plot:
-        given_state_df = covid_df[covid_df.state == state]
-        plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
+    #for state in states_to_plot:
+        #given_state_df = covid_df[covid_df.state == state]
+        #plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
+
+        #for state in states_to_plot:
+            #given_state_df = covid_df[covid_df.state == state]
+            #plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
         
-        
-    
+
  
       
 def modify_plot(ax,states_to_plot):
