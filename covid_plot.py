@@ -8,7 +8,7 @@ def read_in_data(filename):
     filename: path to file name: e.g. /home/shared_data/covid-19-data/rolling-averages/us-states.csv
     OUTPUT: Pandas dataframe - converted from csv input.
     '''
-    covid_df = pd.read_csv('/home/shared_data/covid-19-data/rolling-averages/us-states.csv')
+    covid_df = pd.read_csv(filename)
     return covid_df
     
 def get_extreme_states(covid_df, num_states):
