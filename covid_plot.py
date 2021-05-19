@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -21,7 +20,7 @@ def get_extreme_states(df, num_states):
     low_states: states with lowest covid cases
     high_states: states with highest covid cases
     '''
-    agg_df=covid_df[['cases_avg_per_100k, state']].groupby('state').agg('mean')
+    agg_df=covid_df[['cases_avg_per_100k', 'state']].groupby('state').agg('mean')
     low_states=agg_df.head(3)
     high_states=agg_df.tail(3)
   
@@ -34,10 +33,10 @@ def make_plot(df,states_to_plot):
     OUTPUT: 
     ax: handle to current plot
     '''
-    ...
+   
         
     
-   
+ 
       
 def modify_plot(ax,states_to_plot):
      '''
@@ -47,6 +46,5 @@ def modify_plot(ax,states_to_plot):
  
     '''
     
-    ...
-  
+   
    
