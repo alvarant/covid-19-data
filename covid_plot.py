@@ -24,6 +24,7 @@ def get_extreme_states(df, num_states):
     agg_df=covid_df[['cases_avg_per_100k, state']].groupby('state').agg('mean')
     low_states=agg_df.head(3)
     high_states=agg_df.tail(3)
+    return low_states,high_states
   
           
 def make_plot(df,states_to_plot):
@@ -34,7 +35,10 @@ def make_plot(df,states_to_plot):
     OUTPUT: 
     ax: handle to current plot
     '''
-    ...
+    for state in states_to_plot:
+        given_state_df = df[df.state == state]
+        plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
+        
         
     
    
