@@ -11,7 +11,7 @@ def read_in_data(filename):
     covid_df = pd.read_csv('/home/shared_data/covid-19-data/rolling-averages/us-states.csv')
     return covid_df
     
-def get_extreme_states(df, num_states):
+def get_extreme_states(covid_df, num_states):
     '''
     INPUT: 
     df: Pandas dataframe with raw state data
@@ -27,7 +27,7 @@ def get_extreme_states(df, num_states):
     return low_states,high_states
   
           
-def make_plot(df,states_to_plot):
+def make_plot(covid_df,states_to_plot):
      '''
     INPUT: 
     df: Pandas dataframe with raw state data
@@ -36,7 +36,7 @@ def make_plot(df,states_to_plot):
     ax: handle to current plot
     '''
     for state in states_to_plot:
-        given_state_df = df[df.state == state]
+        given_state_df = covid_df[covid_df.state == state]
         plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
         
         
