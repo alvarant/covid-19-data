@@ -43,10 +43,11 @@ def make_plot(covid_df,states_to_plot):
         plt.xlabel('date')
         plt.ylabel('the amount of cases by 100K rolling average')
         plt.title('rolling average of cases per 100k residents in top 3 highest states')
-        return state
+        ax = plt.gca()
+        return ax,high_state
         
 def modify_plot(ax,states_to_plot):
-     '''
+    '''
     This function modifies date formatting on plot to make them look better.
     INPUT: 
     ax: handle to current plot
