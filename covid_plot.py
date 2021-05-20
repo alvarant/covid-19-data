@@ -37,17 +37,14 @@ def make_plot(covid_df,states_to_plot):
     ax: handle to current plot
     '''
    
-    #for state in states_to_plot:
-        #given_state_df = covid_df[covid_df.state == state]
-        #plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
-
-        #for state in states_to_plot:
-            #given_state_df = covid_df[covid_df.state == state]
-            #plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
+    for high_state in states_to_plot:
+        given_state_df = covid_df[covid_df.state == state]
+        plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
+        plt.xlabel('date')
+        plt.ylabel('the amount of cases by 100K rolling average')
+        plt.title('rolling average of cases per 100k residents in top 3 highest states')
+        return state
         
-
- 
-      
 def modify_plot(ax,states_to_plot):
      '''
     This function modifies date formatting on plot to make them look better.
@@ -55,6 +52,9 @@ def modify_plot(ax,states_to_plot):
     ax: handle to current plot
  
     '''
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%y'))
+    ax.xaxis.setmajor_locator(mdates.MonthLocator())
+    ax.tick_params(axis='x',labelsize=8,rotation=40)
     
    
    
