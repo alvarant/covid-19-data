@@ -38,7 +38,7 @@ def make_plot(covid_df,states_to_plot):
     '''
    
     for high_state in states_to_plot:
-        given_state_df = covid_df[covid_df.state == state]
+        given_state_df = covid_df[covid_df.state == states]
         plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = state)
         plt.xlabel('date')
         plt.ylabel('the amount of cases by 100K rolling average')
