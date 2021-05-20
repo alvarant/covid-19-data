@@ -43,11 +43,13 @@ def make_plot(covid_df,states_to_plot):
         given_state_df = covid_df[covid_df.state == high_state]
         plt.plot(pd.to_datetime(given_state_df.date), given_state_df.cases_avg_per_100k, label = high_state)
     plt.xlabel('date')
-    plt.ylabel('the amount of cases by 100K rolling average')
-    plt.title('rolling average of cases per 100k residents in top 3 highest states')
+    plt.ylabel('covid infections per 100k')
+    plt.legend(loc='upper left')
     ax = plt.gca()
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
     return ax,high_state
-        
+
 def modify_plot(ax,states_to_plot):
     '''
     This function modifies date formatting on plot to make them look better.
